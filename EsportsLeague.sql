@@ -68,3 +68,44 @@ CREATE TABLE Score(
 	ID
     Match_ID
 );
+
+CREATE TABLE LeagueScore(
+	Score_ID
+    League_ID
+    Total_Score
+);
+
+CREATE TABLE TeamScore(
+	Score_ID
+    Team_ID
+    Total_Score
+);
+
+CREATE TABLE PlayerScore(
+	Score_ID
+    Player_ID
+    Total_Score
+);
+
+CREATE TABLE ScoreLevel(
+	Score_ID
+    Level
+);
+
+CREATE TABLE ScoreRank(
+	Score_ID
+    Rank
+);
+
+CREATE TABLE CompetitonTeams(
+	Team_ID
+    Match_ID
+);
+
+CREATE TABLE CompetitionTeamsWinner(
+	Team_ID
+    Match_ID
+);
+
+
+
