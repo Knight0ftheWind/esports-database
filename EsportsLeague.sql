@@ -3,14 +3,20 @@ CREATE SCHEMA esports;
 USE esports;
 
 CREATE TABLE League(
-	ID
-    Name
-    Country
+	ID INT unsigned NOT NULL,
+    Name VARCHAR(55) NOT NULL,
+    Country VARCHAR(55) NOT NULL,
+	PRIMARY KEY (ID)
 );
 
 CREATE TABLE Team(
-	ID
-    League_ID
+	ID INT UNSIGNED NOT NULL,
+    League_ID INT UNSIGNED NOT NULL,
+	PRIMARY KEY (ID)
+	FOREIGN KEY (League_ID)
+	REFERENCES League(ID)
+	ON UPDATE CASCADE
+	ON DELETE CASCADE
 );
 
 CREATE TABLE Player(
