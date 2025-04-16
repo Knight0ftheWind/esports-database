@@ -83,37 +83,61 @@ CREATE TABLE Competition(
         On Update Cascade
 );
 
-CREATE TABLE Score(
-	ID
-    Match_ID
+-- Set names to be the same as "Competition" - Update if we change "Competition" to another name
+CREATE TABLE Score (
+	ID TINYINT UNSIGNED PRIMARY KEY,
+    FOREIGN KEY (Competition_ID) REFERENCES Competition (ID)
+		ON UPDATE CASCADE
+        ON DELETE CASCADE
 );
 
-CREATE TABLE LeagueScore(
-	Score_ID
-    League_ID
-    Total_Score
+CREATE TABLE ScoreLevel (
+	FOREIGN KEY (Score_ID) REFERENCES Score (ID)
+		ON UPDATE CASCADE
+        ON DELETE CASCADE,
+	Level VARCHAR(8) NOT NULL,
+    PRIMARY KEY (Score_ID)
 );
 
-CREATE TABLE TeamScore(
-	Score_ID
-    Team_ID
-    Total_Score
+CREATE TABLE ScoreRank (
+	FOREIGN KEY (Score_ID) REFERENCES Score (ID)
+		ON UPDATE CASCADE
+        ON DELETE CASCADE,
+	Score_Rank CHAR(1) NOT NULL,
+    PRIMARY KEY (Score_ID)
 );
 
-CREATE TABLE PlayerScore(
-	Score_ID
-    Player_ID
-    Total_Score
+CREATE TABLE LeagueScore (
+	FOREIGN KEY (Score_ID) REFERENCES Score (ID)
+		ON UPDATE CASCADE
+        ON DELETE CASCADE,
+	FOREIGN KEY (League_ID) REFERENCES League (ID)
+		ON UPDATE CASCADE
+        ON DELETE CASCADE,
+	Total_Score SMALLINT UNSIGNED NOT NULL,
+    PRIMARY KEY (Score_ID, League_ID)
 );
 
-CREATE TABLE ScoreLevel(
-	Score_ID
-    Level
+CREATE TABLE TeamScore (
+	FOREIGN KEY (Score_ID) REFERENCES Score (ID)
+		ON UPDATE CASCADE
+        ON DELETE CASCADE,
+	FOREIGN KEY (Team_ID) REFERENCES Team (ID)
+		ON UPDATE CASCADE
+        ON DELETE CASCADE,
+	Total_Score SMALLINT UNSIGNED NOT NULL,
+    PRIMARY KEY (Score_ID, Team_ID)
 );
 
-CREATE TABLE ScoreRank(
-	Score_ID
-    Rank
+CREATE TABLE PlayerScore (
+	FOREIGN KEY (Score_ID) REFERENCES Score (ID)
+		ON UPDATE CASCADE
+        ON DELETE CASCADE,
+	FOREIGN KEY (Player_ID) REFERENCES Player (ID)
+		ON UPDATE CASCADE
+        ON DELETE CASCADE,
+	Total_Score SMALLINT UNSIGNED NOT NULL,
+    PRIMARY KEY (Score_ID, Player_ID)
 );
 
 CREATE TABLE CompetitonTeams(
