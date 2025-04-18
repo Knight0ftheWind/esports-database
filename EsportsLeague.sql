@@ -3,15 +3,15 @@ CREATE SCHEMA esports;
 USE esports;
 
 CREATE TABLE League(
-	ID INT unsigned NOT NULL AUTO_INCREMENT,
+	ID tinyint unsigned NOT NULL AUTO_INCREMENT,
     Name VARCHAR(55) NOT NULL,
     Country VARCHAR(55) NOT NULL,
 	PRIMARY KEY (ID)
 );
 
 CREATE TABLE Team(
-	ID INT UNSIGNED NOT NULL AUTO_INCREMENT,
-    League_ID INT UNSIGNED NOT NULL,
+	ID tinyint UNSIGNED NOT NULL AUTO_INCREMENT,
+    League_ID tinyint UNSIGNED NOT NULL,
 	PRIMARY KEY (ID),
 	FOREIGN KEY (League_ID)
 	REFERENCES League(ID)
@@ -20,12 +20,12 @@ CREATE TABLE Team(
 );
 
 CREATE TABLE Player(
-	ID INT unsigned NOT NULL,
+	ID tinyint unsigned NOT NULL,
 	Player_Name VARCHAR(31),
 	Age TINYINT,
 	Gender CHAR(1),
 	Address VARCHAR(55),
-	Team_ID INT unsigned,
+	Team_ID tinyint unsigned,
 	PRIMARY KEY(ID),
 	FOREIGN KEY(Team_ID) REFERENCES Team(ID)
 		ON UPDATE CASCADE
@@ -34,11 +34,11 @@ CREATE TABLE Player(
 );
 
 CREATE TABLE Infraction(
-	ID INT unsigned NOT NULL,
+	ID tinyint unsigned NOT NULL,
 	Text_Description VARCHAR(63),
 	Report_Date DATE,
 	Class TINYINT,
-	Player_ID INT unsigned NOT NULL,
+	Player_ID tinyint unsigned NOT NULL,
 	PRIMARY KEY (ID),
 	FOREIGN KEY (Player_ID) REFERENCES Player(ID)
 		ON UPDATE CASCADE
@@ -48,12 +48,12 @@ CREATE TABLE Infraction(
 CREATE TABLE Restriction(
 	R_Level TINYINT NOT NULL,
 	Text_Description VARCHAR(63),
-	Duration SMALLINT unsigned,
+	Duration tinyint unsigned,
 	PRIMARY KEY (R_Level)
 );
 
 CREATE TABLE Player_Restriction(
-	Player_ID INT unsigned NOT NULL,
+	Player_ID tinyint unsigned NOT NULL,
 	Start_Date DATE,
 	Expiration DATE,
 	R_Level TINYINT NOT NULL,
@@ -67,22 +67,22 @@ CREATE TABLE Player_Restriction(
 );
 
 CREATE TABLE Game(
-	ID SmallInt Unsigned Not Null,
+	ID tinyint Unsigned Not Null,
     Genre Varchar(45),
     Title Varchar(75),
     Primary Key(ID)
 );
 
 CREATE TABLE Sponsor(
-	ID SmallInt Unsigned Not Null,
+	ID tinyint Unsigned Not Null,
     Name VarChar(50),
     Primary Key(ID)
 );
 
 CREATE TABLE Tournament(
-	ID SmallInt Unsigned Not Null,
+	ID tinyint Unsigned Not Null,
     Date Date,
-    Sponsor_ID smallint unsigned,
+    Sponsor_ID tinyint unsigned,
     Primary Key(ID),
     Foreign Key(Sponsor_ID)
 		References Sponsor(ID)
@@ -90,13 +90,13 @@ CREATE TABLE Tournament(
 );
 
 CREATE TABLE Competition(
-	ID SmallInt Unsigned Not Null,
+	ID tinyint Unsigned Not Null,
     Start_Time Time Not Null,
     End_Time Time,
     Duration Time,
     Replay VarChar(2083),
-    Game_ID Smallint unsigned not null,
-    Tournament_ID smallint unsigned not null,
+    Game_ID tinyint unsigned not null,
+    Tournament_ID tinyint unsigned not null,
     Primary Key(ID),
     foreign key(Game_ID)
 		References Game(ID)
@@ -142,7 +142,7 @@ CREATE TABLE LeagueScore (
 	FOREIGN KEY (League_ID) REFERENCES League (ID)
 		ON UPDATE CASCADE
         ON DELETE CASCADE,
-	Total_Score SMALLINT UNSIGNED NOT NULL,
+	Total_Score smallint UNSIGNED NOT NULL,
     PRIMARY KEY (Score_ID, League_ID)
 );
 
@@ -155,7 +155,7 @@ CREATE TABLE TeamScore (
 	FOREIGN KEY (Team_ID) REFERENCES Team (ID)
 		ON UPDATE CASCADE
         ON DELETE CASCADE,
-	Total_Score SMALLINT UNSIGNED NOT NULL,
+	Total_Score smallint UNSIGNED NOT NULL,
     PRIMARY KEY (Score_ID, Team_ID)
 );
 
@@ -168,13 +168,13 @@ CREATE TABLE PlayerScore (
 	FOREIGN KEY (Player_ID) REFERENCES Player (ID)
 		ON UPDATE CASCADE
         ON DELETE CASCADE,
-	Total_Score SMALLINT UNSIGNED NOT NULL,
+	Total_Score smallint UNSIGNED NOT NULL,
     PRIMARY KEY (Score_ID, Player_ID)
 );
 
 CREATE TABLE CompetitonTeams(
-	Team_ID Smallint Unsigned Not Null,
-    	Match_ID Smallint Unsigned Not Null,
+	Team_ID tinyint Unsigned Not Null,
+    	Match_ID tinyint Unsigned Not Null,
 	Primary Key(Team_ID, Match_ID),
 	Foreign Key(Team_ID) References Team(ID)
 		On Update Cascade,
@@ -183,14 +183,11 @@ CREATE TABLE CompetitonTeams(
 );
 
 CREATE TABLE CompetitionTeamsWinner(
-	Team_ID Smallint Unsigned Not Null,
-    	Match_ID Smallint Unsigned Not Null,
+	Team_ID tinyint Unsigned Not Null,
+    	Match_ID tinyint Unsigned Not Null,
 	Primary Key(Match_ID),
 	Foreign Key(Team_ID) References Team(ID)
 		On Update Cascade,
 	Foreign Key(Match_ID) References Competition(ID)
 		On Update Cascade
 );
-
-
-
