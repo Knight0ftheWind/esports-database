@@ -91,7 +91,7 @@ CREATE TABLE Competition(
 
 -- Set names to be the same as "Competition" - Update if we change "Competition" to another name
 CREATE TABLE Score (
-	ID TINYINT UNSIGNED PRIMARY KEY,
+	ID TINYINT UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     FOREIGN KEY (Competition_ID) REFERENCES Competition (ID)
 		ON UPDATE CASCADE
         ON DELETE CASCADE
