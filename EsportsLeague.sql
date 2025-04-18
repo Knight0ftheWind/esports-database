@@ -173,13 +173,23 @@ CREATE TABLE PlayerScore (
 );
 
 CREATE TABLE CompetitonTeams(
-	Team_ID
-    Match_ID
+	Team_ID Smallint Unsigned Not Null,
+    	Match_ID Smallint Unsigned Not Null,
+	Primary Key(Team_ID, Match_ID),
+	Foreign Key(Team_ID) References Team(ID)
+		On Update Cascade,
+	Foreign Key(Match_ID) References Competition(ID)
+		On Update Cascade
 );
 
 CREATE TABLE CompetitionTeamsWinner(
-	Team_ID
-    Match_ID
+	Team_ID Smallint Unsigned Not Null,
+    	Match_ID Smallint Unsigned Not Null,
+	Primary Key(Match_ID),
+	Foreign Key(Team_ID) References Team(ID)
+		On Update Cascade,
+	Foreign Key(Match_ID) References Competition(ID)
+		On Update Cascade
 );
 
 
