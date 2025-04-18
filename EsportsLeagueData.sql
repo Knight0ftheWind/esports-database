@@ -1,5 +1,32 @@
 use esports;
 
+Insert Into League(Name, Country)
+  Values("Winners Utd.", "Pakistan"),
+  ("Losers Dvd.", "United States of America"),
+  ("Regionals", "Canada"),
+  ("L\'Internationale", "Zimbabwe"),
+  ("EPEMAL2 League", "Mongolia");
+
+Insert Into Team(League_ID)
+  Values(1),
+  (2), (3), (4), (5), (1),
+  (2), (3), (4), (5), (1),
+  (2), (3), (4), (5), (1),
+  (2), (3), (4), (5);
+
+Insert Into Game(ID, Title, Genre)
+Values(0, 'Fortnite', 'Battle Royale'),
+(1, 'Halo: Infinite', 'First Person Shooter'),
+(2, 'League of Legends', 'MOBA'),
+(3, 'Deadlock', 'MOBA'),
+(4, 'Garfield Kart', 'Racing'),
+(5, 'Super Smash Bros Ultimate', 'Fighting'),
+(6, 'Tekken 8', 'Fighting'),
+(7, 'Call of Duty Black Ops 6', 'First Person Shooter'),
+(8, 'CS:GO 2', 'First Person Shooter'),
+(9, 'Marvel Rivals', 'Third Person Shooter'),
+(10, 'Elden Ring: Nightreign', 'Action');
+
 Insert Into Sponsor(ID, Name)
 Values(0, 'Weyland-Yutani'),
 (1, 'Vaultec'),

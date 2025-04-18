@@ -20,33 +20,50 @@ CREATE TABLE Team(
 );
 
 CREATE TABLE Player(
-	ID
-    Name
-    Age
-    Gender
-    Address
-    Team_ID
+	ID INT unsigned NOT NULL,
+	Player_Name VARCHAR(31),
+	Age TINYINT,
+	Gender CHAR(1),
+	Address VARCHAR(55),
+	Team_ID INT unsigned,
+	PRIMARY KEY(ID),
+	FOREIGN KEY(Team_ID) REFERENCES Team(ID)
+		ON UPDATE CASCADE
+		ON DELETE SET NULL,
+	CHECK (Gender IN ('M', 'F', 'N'))
 );
 
 CREATE TABLE Infraction(
-	ID
-    Description
-    Date
-    Class
-    Player_ID
+	ID INT unsigned NOT NULL,
+	Text_Description VARCHAR(63),
+	Report_Date DATE,
+	Class TINYINT,
+	Player_ID INT unsigned NOT NULL,
+	PRIMARY KEY (ID),
+	FOREIGN KEY (Player_ID) REFERENCES Player(ID)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
 );
 
 CREATE TABLE Restriction(
-	Level
-    Description
-    Duration
+	R_Level TINYINT NOT NULL,
+	Text_Description VARCHAR(63),
+	Duration SMALLINT unsigned,
+	PRIMARY KEY (R_Level)
 );
 
 CREATE TABLE Player_Restriction(
-	Player_ID
-    Start_Date
-    Expiration
-    Level
+	Player_ID INT unsigned NOT NULL,
+	Start_Date DATE,
+	Expiration DATE,
+	R_Level TINYINT NOT NULL,
+	PRIMARY KEY(Player_ID),
+	FOREIGN KEY(Player_ID) REFERENCES Player(ID)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE,
+	FOREIGN KEY(R_Level) REFERENCES Restriction(R_Level)
+		ON UPDATE CASCADE
+		ON DELETE CASCADE
 );
 
 CREATE TABLE Game(
