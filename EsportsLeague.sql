@@ -20,7 +20,7 @@ CREATE TABLE Team(
 );
 
 CREATE TABLE Player(
-	ID tinyint unsigned NOT NULL,
+	ID tinyint unsigned NOT NULL AUTO_INCREMENT,
 	Player_Name VARCHAR(31),
 	Age TINYINT,
 	Gender CHAR(1),
@@ -34,7 +34,7 @@ CREATE TABLE Player(
 );
 
 CREATE TABLE Infraction(
-	ID tinyint unsigned NOT NULL,
+	ID tinyint unsigned NOT NULL AUTO_INCREMENT,
 	Text_Description VARCHAR(63),
 	Report_Date DATE,
 	Class TINYINT,
@@ -46,7 +46,7 @@ CREATE TABLE Infraction(
 );
 
 CREATE TABLE Restriction(
-	R_Level TINYINT NOT NULL,
+	R_Level TINYINT NOT NULL AUTO_INCREMENT,
 	Text_Description VARCHAR(63),
 	Duration tinyint unsigned,
 	PRIMARY KEY (R_Level)
