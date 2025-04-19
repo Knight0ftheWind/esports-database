@@ -24,7 +24,7 @@ CREATE TABLE Player(
 	Player_Name VARCHAR(31),
 	Age TINYINT,
 	Gender CHAR(1),
-	Address VARCHAR(55),
+	Address VARCHAR(63),
 	Team_ID tinyint unsigned,
 	PRIMARY KEY(ID),
 	FOREIGN KEY(Team_ID) REFERENCES Team(ID)
