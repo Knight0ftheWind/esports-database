@@ -274,3 +274,11 @@ VALUES
 ("Minor", 24),
 ("Temporary Ban", 1),
 ("Long Ban", 12);
+
+INSERT INTO Player_Restriction(Player_ID, Start_Date, Expiration, R_Level)
+VALUES
+(9, "2024-04-01", "2026-04-01", 2),
+(39, "2025-04-01", "2027-04-01", 2),
+(37, "2023-08-17", "3000-01-01", 1),
+(23, "2025-03-23", "2025-04-23", 3),
+(11, "2024-06-06", "2025-06-06", 4);
