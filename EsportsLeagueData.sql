@@ -267,3 +267,10 @@ VALUES
 ("Bryan Harrison",31,"F","USNS Mitchell, FPO AA 91235",17),
 ("Victor Gutierrez",16,"M","37233 Jimmy Center, Port Shane, RI 02311",17),
 ("Emily Butler",43,"F","70618 Brewer Vista, South Johnmouth, MS 75763",18);
+
+INSERT INTO Restriction (Text_Description, Duration)
+VALUES
+("Permanent Ban", 0),
+("Minor", 24),
+("Temporary Ban", 1),
+("Long Ban", 12);
