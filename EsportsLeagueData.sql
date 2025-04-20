@@ -282,3 +282,12 @@ VALUES
 (37, "2023-08-17", "3000-01-01", 1),
 (23, "2025-03-23", "2025-04-23", 3),
 (11, "2024-06-06", "2025-06-06", 4);
+
+INSERT INTO Infraction (Text_Description, Report_Date, Class, Player_ID)
+VALUES
+("Unsportsmanlike Conduct", "2025-02-18", 2, 18),
+("Modified Equipment", "2024-11-13", 6, 32),
+("Fraud", "2023-01-03", 5, 24),
+("Physical Violence", "2023-08-17", 10, 37),
+("Unsportsmanlike Conduct", "2025-03-23", 6, 23),
+("Cheating - Aimbot", "2024-06-06", 8, 11);
