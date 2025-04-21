@@ -159,7 +159,7 @@ CREATE TABLE PlayerScore (
     PRIMARY KEY (Score_ID, Player_ID)
 );
 
-CREATE TABLE CompetitonTeams(
+CREATE TABLE CompetitionTeams(
 	Team_ID tinyint Unsigned Not Null,
     	Match_ID tinyint Unsigned Not Null,
 	Primary Key(Team_ID, Match_ID),
